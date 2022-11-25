@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import { Context } from './Check';
 const Search = () => {
   const [text,setText] = useState()
-  const {searchValue,setSearchValue} = useContext(Context)
+  const {setSearchValue} = useContext(Context)
   const navigate = useNavigate();
   
  function handleSubmit(e){
