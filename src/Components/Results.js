@@ -25,7 +25,7 @@ const Results = () => {
               setResult(data);
         }
         fetchApi();
-    },[searchValue,Location.pathname])
+    },[searchValue,type])
     
     console.log(result)
    
@@ -111,10 +111,10 @@ const Results = () => {
                         <Typography variant="h6" >{title}</Typography>
                         </a>
                         <Typography variant="subtitle2" color="green">{url}</Typography>
-                        <Typography variant="body2">{description}...</Typography>
+                        <Typography variant="body2">{description?.slice(0,1000)}...</Typography>
                         </div>
                         <div>
-                            <img src={image.url} style={{height:"100%",width:"150px"}}/>
+                            <img src={image?.url} alt={image?.title} style={{height:"100%",width:"150px"}}/>
                         </div>
                      </Box>
                     )
@@ -122,6 +122,8 @@ const Results = () => {
                 </Stack>      
                 </>
             )
+        default :
+            return "Invalid"
     }
 }
 
