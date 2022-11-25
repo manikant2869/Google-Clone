@@ -6,7 +6,7 @@ export const Check = ({children}) => {
   const [searchValue,setSearchValue] = useState('virat Kohli')
   
   return (
-    <Context.Provider value={{searchValue,setSearchValue,result,setResult}}>
+    <Context.Provider value={{searchValue,setSearchValue}}>
       {children}
     </Context.Provider>
   )
