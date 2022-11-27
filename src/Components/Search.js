@@ -20,7 +20,15 @@ const Search = () => {
   return (
     
     <div style={{display:"flex", marginTop:"10px"}}>
-      <form onSubmit={(e)=>handleSubmit(e)} style={{width:"100%",display:"flex",justifyContent:"center"}}>
+      <span style={{color:'blue'}} ><h5 style={{display:"inline",fontSize:'17px'}}>S</h5></span>
+      <span style={{color:'red'}}>e</span>
+      <span style={{color:'orange'}}>a</span>
+      <span style={{color:'green'}}>r</span>
+      <span style={{color:'blue'}}>c</span>
+      <span style={{marginRight:"5px",color:'orange'}}>h</span>
+      <span style={{color:'blue'}}>I</span>
+      <span style={{marginRight:"20px",color:'green'}}>t!</span>
+      <form onSubmit={(e)=>handleSubmit(e)} style={{width:"75%",display:"flex",justifyContent:"center"}}>
         <TextField
           id="standard-search"
           label="Search field"

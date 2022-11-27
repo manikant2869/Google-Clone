@@ -5,7 +5,7 @@ import { Stack } from '@mui/system';
 import { Box, CardMedia,Card,CardContent } from '@mui/material'
 import Typography from '@mui/material/Typography';
 import { Context } from './Check';
-import './NewsImage.css'
+
 const Results = () => {
     const Location = useLocation()
     const { searchValue} = useContext(Context);
@@ -36,7 +36,7 @@ const Results = () => {
     switch(Location.pathname){
         case "/":
             return(
-                <Stack direction="column"  spacing={3} sx={{marginLeft:"10%",marginRight:"10%"}}>
+                  <Stack direction="column"  spacing={3} sx={{marginLeft:"15px",marginRight:"15px",width:"100%"}}>
                   {result?.map(({title,url,id,description})=>{
                     return(
                     <Box key={id} >
@@ -57,7 +57,7 @@ const Results = () => {
             return (
                 <>
                 
-                <Stack direction="column"  spacing={3} sx={{marginLeft:"10%",marginRight:"10%"}}>
+                <Stack direction="column"  spacing={3} gap={2} sx={{marginLeft:"15px",marginRight:"15px"}}>
                   {result?.map(({title,url,id,description})=>{
                     return(
                     <Box key={id} >
@@ -79,10 +79,10 @@ const Results = () => {
                 <>
                 
                 <Stack direction={ 'row'} flexWrap="wrap" justifyContent="start" gap={2}  sx={{marginTop:"20px"}}>
-                   {result.map(({url,webpageUrl,title})=>{
+                   {result?.map(({url,webpageUrl,title})=>{
                     return(
                     <a href={webpageUrl} style={{textDecoration:"none"}}>
-                      <Card sx={{width:{xs:'100%',sm:'190px',md:'100px'},boxShadow:'none',borderRadius:'none' }}>
+                      <Card sx={{width:{xs:'100%',sm:'190px',md:'150px'},boxShadow:'none',borderRadius:'none' }}>
                         <CardMedia 
                            component="img"
                            height="194"
@@ -109,7 +109,7 @@ const Results = () => {
                   {result?.map(({title,url,id,description,image})=>{
                     return(
                     <Box  key={id} border="1px solid lightgray" borderRight="none" borderRadius="5px 1px 1px 5px" display="flex" >
-                        <Box marginLeft="5px" paddingTop="3px" width="80%" borderRight="1px solid lightgray">
+                        <Box marginLeft="5px" paddingTop="3px" width="100%" borderRight="1px solid lightgray">
                         <a href={url} style={{textDecoration:"none"}}>
                         <Typography variant="inherit" sx={{fontFamily:"sans-serif" ,fontWeight:"600"}} >{title}</Typography>
                         </a>

@@ -1,4 +1,11 @@
-.news-image{
-   width:"75px";
-   height:"100px";
+.navbar a:hover{
+   color:red;
+}
+.navbar-all{
+    display: inline;
+    font-size: large;
+    color:black;
+}
+.navbar-all:hover{
+    color:red;
 }

@@ -22,8 +22,8 @@ export const getResult = async (type,searchTerm)=>{
           url: `https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/${searchthing}`,
           params: {q: `${searchTerm}`, pageNumber: '1', pageSize: "50", autoCorrect: 'true'},
           headers: {
-                'X-RapidAPI-Key': '2736f84ef8mshc853ea3253cd6adp17c39ajsn5e46431ba122',
-                'X-RapidAPI-Host': 'contextualwebsearch-websearch-v1.p.rapidapi.com'
+            'X-RapidAPI-Key': 'ab598184f7mshfe09326f577f5dcp12a83ejsnc0c49d14f46d',
+            'X-RapidAPI-Host': 'contextualwebsearch-websearch-v1.p.rapidapi.com'
           }
         };
         
