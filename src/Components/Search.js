@@ -20,14 +20,14 @@ const Search = () => {
   return (
     
     <div style={{display:"flex", marginTop:"10px"}}>
-      <span style={{color:'blue'}} ><h5 style={{display:"inline",fontSize:'17px'}}>S</h5></span>
-      <span style={{color:'red'}}>e</span>
-      <span style={{color:'orange'}}>a</span>
-      <span style={{color:'green'}}>r</span>
-      <span style={{color:'blue'}}>c</span>
-      <span style={{marginRight:"5px",color:'orange'}}>h</span>
-      <span style={{color:'blue'}}>I</span>
-      <span style={{marginRight:"20px",color:'green'}}>t!</span>
+      <span style={{color:'blue'}} ><h1 style={{display:"inline",fontSize:'17px'}}>S</h1></span>
+      <span style={{color:'red'}}><h2 style={{display:"inline",fontSize:'17px'}}>e</h2></span>
+      <span style={{color:'orange'}}><h2 style={{display:"inline",fontSize:'17px'}}>a</h2></span>
+      <span style={{color:'green'}}><h2 style={{display:"inline",fontSize:'17px'}}>r</h2></span>
+      <span style={{color:'blue'}}><h2 style={{display:"inline",fontSize:'17px'}}>c</h2></span>
+      <span style={{marginRight:"5px",color:'orange'}}><h2 style={{display:"inline",fontSize:'17px'}}>h</h2></span>
+      <span style={{color:'blue'}}><h2 style={{display:"inline",fontSize:'17px'}}>I</h2></span>
+      <span style={{marginRight:"20px",color:'green'}}><h2 style={{display:"inline",fontSize:'17px'}}>t!</h2></span>
       <form onSubmit={(e)=>handleSubmit(e)} style={{width:"75%",display:"flex",justifyContent:"center"}}>
         <TextField
           id="standard-search"
