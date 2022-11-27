@@ -5,6 +5,7 @@ import { Stack } from '@mui/system';
 import { Box, CardMedia,Card,CardContent } from '@mui/material'
 import Typography from '@mui/material/Typography';
 import { Context } from './Check';
+import './NewsImage.css'
 const Results = () => {
     const Location = useLocation()
     const { searchValue} = useContext(Context);
@@ -35,10 +36,10 @@ const Results = () => {
     switch(Location.pathname){
         case "/":
             return(
-                <Stack direction="column" border="1px solid blue" spacing={3} sx={{marginLeft:"10%",marginRight:"10%"}}>
+                <Stack direction="column"  spacing={3} sx={{marginLeft:"10%",marginRight:"10%"}}>
                   {result?.map(({title,url,id,description})=>{
                     return(
-                    <Box key={id} border="1px solid red">
+                    <Box key={id} >
                         <a href={url} style={{textDecoration:"none"}}>
                         <Typography variant="h6" >{title}</Typography>
                         </a>
@@ -56,12 +57,12 @@ const Results = () => {
             return (
                 <>
                 
-                <Stack direction="column" border="1px solid red" spacing={3} sx={{marginLeft:"10%",marginRight:"10%"}}>
+                <Stack direction="column"  spacing={3} sx={{marginLeft:"10%",marginRight:"10%"}}>
                   {result?.map(({title,url,id,description})=>{
                     return(
-                    <Box key={id} border="1px solid blue">
+                    <Box key={id} >
                         <a href={url} style={{textDecoration:"none"}}>
-                        <Typography variant="h6" >{title}</Typography>
+                        <Typography variant="h6" sx={{fontFamily:"sans-serif"}}>{title}</Typography>
                         </a>
                         <Typography variant="subtitle2" color="green">{url}</Typography>
                         <Typography variant="body2">{description?.substring(0,200)}...</Typography>
@@ -104,20 +105,20 @@ const Results = () => {
             return(
                 <>
                 
-                <Stack direction="column" spacing={1} sx={{marginLeft:"5%"}}>
+                <Stack direction="column"  spacing={1} sx={{marginLeft:"5%"}}>
                   {result?.map(({title,url,id,description,image})=>{
                     return(
-                    <Box key={id} border="1px solid lightgray" borderRadius="5px" display="flex" >
-                        <div style={{width:"75%",border:"1px solid blue"}}>
+                    <Box  key={id} border="1px solid lightgray" borderRight="none" borderRadius="5px 1px 1px 5px" display="flex" >
+                        <Box marginLeft="5px" paddingTop="3px" width="80%" borderRight="1px solid lightgray">
                         <a href={url} style={{textDecoration:"none"}}>
-                        <Typography variant="body1" >{title}</Typography>
+                        <Typography variant="inherit" sx={{fontFamily:"sans-serif" ,fontWeight:"600"}} >{title}</Typography>
                         </a>
-                        <Typography variant="subtitle2" color="green">{url}</Typography>
+                        <Typography variant="subtitle2" color="green">{url?.substring(0,100)}</Typography>
                         <Typography variant="inherit">{description?.substring(0,200)}...</Typography>
-                        </div>
-                        <div style={{width:"25%",border:"1px solid red"}}>
-                            <img src={image?.url}  alt={image?.title} style={{height:"130spx",width:"130px",marginBottom:"10px",marginTop:"10px",marginLeft:"0px"}}/>
-                        </div>
+                        </Box>
+                        <Box width="20%">
+                            <img src={image?.url}  alt={image?.title} style={{width:"100px",height:"100px",margin:"10px"}}/>
+                        </Box>
                      </Box>
                     )
                   })}
