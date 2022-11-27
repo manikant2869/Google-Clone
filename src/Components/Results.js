@@ -15,8 +15,10 @@ const Results = () => {
         type = "web"
     }else if(Location.pathname === '/news'){
         type = "news"
-    }else{
+    }else if (Location.pathname === '/images'){
         type = "images"
+    }else{
+      type = "web"
     }
     useEffect( ()=>{
          const fetchApi = async ()=>{
@@ -33,15 +35,15 @@ const Results = () => {
     switch(Location.pathname){
         case "/":
             return(
-                <Stack direction="column" spacing={3} sx={{marginLeft:"10%",marginRight:"10%"}}>
+                <Stack direction="column" border="1px solid blue" spacing={3} sx={{marginLeft:"10%",marginRight:"10%"}}>
                   {result?.map(({title,url,id,description})=>{
                     return(
-                    <Box key={id}>
+                    <Box key={id} border="1px solid red">
                         <a href={url} style={{textDecoration:"none"}}>
                         <Typography variant="h6" >{title}</Typography>
                         </a>
-                        <Typography variant="subtitle2" color="green">{url}</Typography>
-                        <Typography variant="body2">{description}...</Typography>
+                        <Typography variant="subtitle2" color="green" width="100%">{url}</Typography>
+                        <Typography variant="body2" width="100%" >{description}...</Typography>
                         
                      </Box>
                     )
@@ -54,15 +56,15 @@ const Results = () => {
             return (
                 <>
                 
-                <Stack direction="column" spacing={3} sx={{marginLeft:"10%",marginRight:"10%"}}>
+                <Stack direction="column" border="1px solid red" spacing={3} sx={{marginLeft:"10%",marginRight:"10%"}}>
                   {result?.map(({title,url,id,description})=>{
                     return(
-                    <Box key={id}>
+                    <Box key={id} border="1px solid blue">
                         <a href={url} style={{textDecoration:"none"}}>
                         <Typography variant="h6" >{title}</Typography>
                         </a>
                         <Typography variant="subtitle2" color="green">{url}</Typography>
-                        <Typography variant="body2">{description}...</Typography>
+                        <Typography variant="body2">{description?.substring(0,200)}...</Typography>
                         
                      </Box>
                     )
@@ -106,15 +108,15 @@ const Results = () => {
                   {result?.map(({title,url,id,description,image})=>{
                     return(
                     <Box key={id} border="1px solid lightgray" borderRadius="5px" display="flex" >
-                        <div style={{width:"75%"}}>
+                        <div style={{width:"75%",border:"1px solid blue"}}>
                         <a href={url} style={{textDecoration:"none"}}>
-                        <Typography variant="h6" >{title}</Typography>
+                        <Typography variant="body1" >{title}</Typography>
                         </a>
                         <Typography variant="subtitle2" color="green">{url}</Typography>
-                        <Typography variant="body2">{description?.slice(0,1000)}...</Typography>
+                        <Typography variant="inherit">{description?.substring(0,200)}...</Typography>
                         </div>
-                        <div>
-                            <img src={image?.url} alt={image?.title} style={{height:"100%",width:"150px"}}/>
+                        <div style={{width:"25%",border:"1px solid red"}}>
+                            <img src={image?.url}  alt={image?.title} style={{height:"130spx",width:"130px",marginBottom:"10px",marginTop:"10px",marginLeft:"0px"}}/>
                         </div>
                      </Box>
                     )
