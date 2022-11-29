@@ -7,12 +7,12 @@ export const getResult = async (type,searchTerm)=>{
    
    console.log(type);
    console.log(searchTerm);
-  
+   
         let searchthing ;
-        if(type === "news"){
-            searchthing="NewsSearchAPI"
-        }else if(type === "web"){
-            searchthing = "WebSearchAPI";
+        if(type === '/search'){
+            searchthing="WebSearchAPI"
+        }else if(type === '/news'){
+            searchthing = "NewsSearchAPI";
         }else{
             searchthing = "ImageSearchAPI"
         }

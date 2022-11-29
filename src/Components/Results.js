@@ -1,43 +1,42 @@
-import React,{useEffect,useState,useContext} from 'react'
+import React,{useEffect,useContext, useReducer} from 'react'
 import { useLocation } from 'react-router-dom';
 import { getResult } from '../Context/ContextProvider';
 import { Stack } from '@mui/system';
 import { Box, CardMedia,Card,CardContent } from '@mui/material'
 import Typography from '@mui/material/Typography';
 import { Context } from './Check';
-
+import Loading from './Loading'
+import { Reducer } from './Reducer';
+const initialstate = {
+  IsLoading : true,
+  Data: []
+}
 const Results = () => {
     const Location = useLocation()
     const { searchValue} = useContext(Context);
-    const [result,setResult] = useState([])
-    let type ;
-    
-    if(Location.pathname === '/search'){
-        type = "web"
-    }else if(Location.pathname === '/news'){
-        type = "news"
-    }else if (Location.pathname === '/images'){
-        type = "images"
-    }else{
-      type = "web"
-    }
-    useEffect( ()=>{
-         const fetchApi = async ()=>{
-            const data = await getResult(type,searchValue)
-            
-              setResult(data);
-        }
-        fetchApi();
-    },[searchValue,type])
-    
-    console.log(result)
+    const [state,Dispatch] = useReducer(Reducer,initialstate)
    
     
+    
+    useEffect( ()=>{
+         const fetchApi = async ()=>{
+            const data = await getResult(Location.pathname,searchValue)
+            console.log(data);
+              Dispatch({type:"DataDisplay",payLoad:data})
+        }
+        Dispatch({type:"spinningLoader"})
+        fetchApi();
+        
+    },[searchValue,Location.pathname])
+    
+    
+   
+    if(state.IsLoading) return <Loading />
     switch(Location.pathname){
         case "/":
             return(
                   <Stack direction="column"  spacing={3} sx={{marginLeft:"15px",marginRight:"15px",width:"100%"}}>
-                  {result?.map(({title,url,id,description})=>{
+                  {state.Data?.map(({title,url,id,description})=>{
                     return(
                     <Box key={id} >
                         <a href={url} style={{textDecoration:"none"}}>
@@ -58,7 +57,7 @@ const Results = () => {
                 <>
                 
                 <Stack direction="column"  spacing={3} gap={2} sx={{marginLeft:"15px",marginRight:"15px"}}>
-                  {result?.map(({title,url,id,description})=>{
+                  {state.Data?.map(({title,url,id,description})=>{
                     return(
                     <Box key={id} >
                         <a href={url} style={{textDecoration:"none"}}>
@@ -79,7 +78,7 @@ const Results = () => {
                 <>
                 
                 <Stack direction={ 'row'} flexWrap="wrap" justifyContent="start" gap={2}  sx={{marginTop:"20px"}}>
-                   {result?.map(({url,webpageUrl,title})=>{
+                   {state.Data?.map(({url,webpageUrl,title})=>{
                     return(
                     <a href={webpageUrl} style={{textDecoration:"none"}}>
                       <Card sx={{width:{xs:'100%',sm:'190px',md:'150px'},boxShadow:'none',borderRadius:'none' }}>
@@ -106,7 +105,7 @@ const Results = () => {
                 <>
                 
                 <Stack direction="column"  spacing={1} sx={{marginLeft:"5%"}}>
-                  {result?.map(({title,url,id,description,image})=>{
+                  {state.Data?.map(({title,url,id,description,image})=>{
                     return(
                     <Box  key={id} border="1px solid lightgray" borderRight="none" borderRadius="5px 1px 1px 5px" display="flex" >
                         <Box marginLeft="5px" paddingTop="3px" width="100%" borderRight="1px solid lightgray">
